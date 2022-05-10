@@ -1,0 +1,31 @@
+html, body {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 5em;
+    margin: 0%;
+}
+
+input {
+    margin: 2%;
+    padding: 1%;
+    border-radius: 15px;
+    width: 50%;
+}
+
+button {
+    height: 3em;
+    width: 3em;
+    border-radius: 50%;
+}
