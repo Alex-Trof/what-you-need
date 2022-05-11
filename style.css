@@ -7,6 +7,8 @@ html, body {
 }
 
 .center {
+    padding-top: 5%;
+    align-self: flex-start;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -19,7 +21,6 @@ html, body {
     justify-content: center;
     align-items: center;
     position: relative;
-    background-color: white;
     z-index: 0;
 }
 
@@ -44,6 +45,16 @@ button {
     justify-content: center;
     align-items: center;
     transition: all 0.5s ease-in-out;
+}
+
+#map {
+    opacity: 0;
+    z-index: -2;
+    transition: all 0.5s ease-in-out;
+    top: 140%;
+    height: 40em;
+    width: 40em;
+    position: absolute;
 }
 
 #cityInput {
