@@ -8,12 +8,17 @@
 
     <body>
         <div class="center">
-            <h1>What you need ?</h1>
-            <input type="text" id="researchInput" size="10"/>
-            <button>
-                <i class="fas fa-check"></i>
-            </button>
-            <div id="result"></div>
+            <div id="research">
+                <h1>De quoi avez vous besoin ?</h1>
+                <input type="text" id="articleInput"/>
+                <div id="cityResearch">
+                    <h1>Dans quelle ville ?</h1>
+                    <input type="text" id="cityInput"/>
+                    <button id="searchButton">
+                        <i class="fas fa-check"></i>
+                    </button>
+                </div>
+            </div>
         </div>
     </body>
     <script src="./service.js"></script>
