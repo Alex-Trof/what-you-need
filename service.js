@@ -1,12 +1,11 @@
 function initMap() {
-  var map = L.map('map').setView([40.91, -96.63], 4);
 
+  var map = L.map('map').setView([40.91, -96.63], 4);
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
   }).addTo(map);
 
   var searchControl = L.esri.Geocoding.geosearch({
-    searchInputId: 'cityInput',
     position: 'topright',
     placeholder: 'Enter an address or place e.g. 1 York St',
     useMapBounds: false,
@@ -33,11 +32,14 @@ function initMap() {
 window.onload = function() {
   initMap(); 
 
+  const timer = 500
+
   const article = document.getElementById('articleInput');
   const city = document.getElementById('cityResearch');
   const cityInput = document.getElementById('cityInput');
   const button = document.getElementById('searchButton');
   const map = document.getElementById('map');
+  const geoInput = document.getElementsByClassName('geocoder-control-input leaflet-bar')[0]
 
   const articleInputHandler = function(e) {
     if(this.value.length > 3) {
@@ -63,8 +65,23 @@ window.onload = function() {
       button.style.top = "70%"
       button.style.position = "absolute"
     }
+  } 
+
+  geoHandler = function(e) {
+    console.log(this.value)
+    console.log(e);
+    const text = e.currentTarget.value;
+
+    // Clear timer
+    clearTimeout(timer);
+
+    // Wait for X ms and then process the request
+    timer = setTimeout(() => {
+        console.log()
+    }, waitTime);
   }
 
+  geoInput.addEventListener('keyup', geoHandler)
   article.addEventListener('input', articleInputHandler);
   cityInput.addEventListener('input', cityInputHandler);
 }
