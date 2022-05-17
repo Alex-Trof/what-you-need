@@ -62,13 +62,24 @@ button {
 }
 
 h1 {
-    font-size: 5em;
+    font-size: 4em;
     margin: 0%;
 }
 
-input {
-    margin: 2%;
-    padding: 1%;
+#articleInput {
+    padding-left: 2%;
+    padding-right: 1%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 15px;
+    width: 50%;
+}
+
+#cityInput {
+    padding-left: 4%;
+    padding-right: 2%;
+    padding-top: 2%;
+    padding-bottom: 2%;
     border-radius: 15px;
     width: 50%;
 }

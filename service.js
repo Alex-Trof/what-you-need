@@ -21,6 +21,7 @@ function initMap() {
   var results = L.layerGroup().addTo(map);
 
   searchControl.on('results', function (data) {
+    console.log(data)
     results.clearLayers();
     for (var i = data.results.length - 1; i >= 0; i--) {
       results.addLayer(L.marker(data.results[i].latlng));
@@ -39,6 +40,7 @@ window.onload = function() {
   const cityInput = document.getElementById('cityInput');
   const button = document.getElementById('searchButton');
   const map = document.getElementById('map');
+
   const geoInput = document.getElementsByClassName('geocoder-control-input leaflet-bar')[0]
 
   const articleInputHandler = function(e) {
@@ -54,11 +56,14 @@ window.onload = function() {
   }
 
   const cityInputHandler = function(e) {
+    geoInput.value = this.value
+
     if(this.value.length > 3) {
       button.style.opacity =  "1"
       button.style.top = "100%"
 
       map.style.opacity =  "1"
+      geoInput.focus()
     }
     else {
       button.style.opacity =  "0"
@@ -67,21 +72,17 @@ window.onload = function() {
     }
   } 
 
-  geoHandler = function(e) {
-    console.log(this.value)
-    console.log(e);
-    const text = e.currentTarget.value;
-
-    // Clear timer
-    clearTimeout(timer);
-
-    // Wait for X ms and then process the request
-    timer = setTimeout(() => {
-        console.log()
-    }, waitTime);
+  addGeoSelected = function(e) {
+    const geoSelected = document.getElementsByClassName('geocoder-control-suggestion geocoder-control-selected')[0]
+    console.log(geoSelected)
+    geoSelected.addEventListener('focus', geoSelectHandler);
   }
 
-  geoInput.addEventListener('keyup', geoHandler)
+  geoHandler = function(e) {
+    cityInput.value = this.value
+  }
+
+  geoInput.addEventListener('input', geoHandler);
   article.addEventListener('input', articleInputHandler);
   cityInput.addEventListener('input', cityInputHandler);
 }
